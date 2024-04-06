@@ -12,4 +12,5 @@ public class DataContext : DbContext
     public DbSet<AppUser> Users { get; set; }
 
     public DbSet<TestEF> Test{get;set;}
+    
 }
