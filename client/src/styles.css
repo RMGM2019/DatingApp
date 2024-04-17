@@ -4,6 +4,7 @@
 @import "node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "node_modules/bootswatch/dist/united/bootstrap.css";
 @import "node_modules/font-awesome/css/font-awesome.css";
+@import "node_modules/ngx-spinner/animations/line-scale-party.css";
 /* You can add global styles to this file, and also import other style files */
 
 

@@ -1,4 +1,5 @@
-﻿using API.DTOs;
+﻿using System.Security.Claims;
+using API.DTOs;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -33,7 +34,19 @@ namespace API
            
         }
 
-       
+        [HttpPut]
+             public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto){
+                var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                var user = await _userRepository.GetUserByUsernameAsync(username);
+
+                if(user== null) return NotFound();
+
+                _mapper.Map(memberUpdateDto, user);
+
+                if(await _userRepository.SaveAllAsync()) return NoContent();
+
+                return BadRequest("Fail to update user");
+             }
     }
 }
 
